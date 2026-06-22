@@ -32,6 +32,7 @@
 html {
   scroll-behavior: smooth;
   background: var(--black);
+  overflow-x: clip;
   overscroll-behavior: none;
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
@@ -42,7 +43,9 @@ body {
   background: var(--black);
   color: var(--white);
   line-height: 1.6;
-  overflow-x: hidden;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: clip;
   overscroll-behavior: none;
   -webkit-font-smoothing: antialiased;
 }
@@ -316,7 +319,7 @@ section { position: relative; z-index: 2; }
 .clip-fallback:hover { color: var(--gold); }
 
 /* ===== About ===== */
-.about { display: grid; grid-template-columns: 0.85fr 1fr; gap: 64px; align-items: center; }
+.about { display: grid; grid-template-columns: 0.85fr 1fr; gap: 64px; align-items: center; position: relative; overflow-x: clip; }
 .about__glow {
   position: absolute; right: -10%; top: 30%; width: 40vw; height: 40vw; border-radius: 50%;
   background: radial-gradient(circle, rgba(61,59,48,0.5), transparent 70%); filter: blur(50px); z-index: -1;

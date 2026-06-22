@@ -4,6 +4,21 @@
 (function () {
   "use strict";
 
+  /* ---- Bloqueia pinch-zoom / double-tap-zoom (alguns navegadores ignoram
+         user-scalable=no), evitando o site "travar" deslocado ---- */
+  ["gesturestart", "gesturechange", "gestureend"].forEach(function (evt) {
+    document.addEventListener(evt, function (e) { e.preventDefault(); }, { passive: false });
+  });
+  document.addEventListener("touchmove", function (e) {
+    if (e.touches && e.touches.length > 1) e.preventDefault();
+  }, { passive: false });
+  var lastTouchEnd = 0;
+  document.addEventListener("touchend", function (e) {
+    var now = Date.now();
+    if (now - lastTouchEnd <= 350) e.preventDefault();
+    lastTouchEnd = now;
+  }, { passive: false });
+
   /* ---- Year ---- */
   var y = document.getElementById("year");
   if (y) y.textContent = new Date().getFullYear();
