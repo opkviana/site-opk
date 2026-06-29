@@ -19,6 +19,22 @@
     lastTouchEnd = now;
   }, { passive: false });
 
+  /* ---- Hero video: fonte específica por dispositivo (mobile x desktop) ---- */
+  var heroVideo = document.getElementById("heroVideo");
+  if (heroVideo) {
+    var isMobile = window.matchMedia("(max-width: 768px)").matches;
+    var vsrc = heroVideo.getAttribute(isMobile ? "data-mobile" : "data-desktop");
+    if (vsrc) {
+      var source = document.createElement("source");
+      source.src = vsrc;
+      source.type = "video/mp4";
+      heroVideo.appendChild(source);
+      heroVideo.load();
+      var playAttempt = heroVideo.play();
+      if (playAttempt && playAttempt.catch) playAttempt.catch(function () {});
+    }
+  }
+
   /* ---- Year ---- */
   var y = document.getElementById("year");
   if (y) y.textContent = new Date().getFullYear();

@@ -71,8 +71,10 @@
     <!-- ===== 1. HERO ===== -->
     <section class="hero" id="hero">
       <div class="hero__media">
-        <video autoplay muted loop playsinline poster="landing_page_refs/foto_personalizada1.jpg">
-          <source src="landing_page_refs/video_base.mp4" type="video/mp4" />
+        <video id="heroVideo" autoplay muted loop playsinline poster="landing_page_refs/foto_personalizada1.jpg"
+          data-desktop="landing_page_refs/video_base.mp4"
+          data-mobile="landing_page_refs/opk%20-%2008.mp4">
+          <!-- fonte injetada por JS conforme o dispositivo (mobile x desktop) -->
         </video>
         <div class="hero__scrim"></div>
       </div>
